@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Include the jQuery Mobile library -->
+    <link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>-->
+    <script type="text/javascript" src="app.js?v=11"></script>
+
+    <!-- /VALIDATION -->
+    <script type="text/javascript">
+
+
+       app.initialize();
+
+     // Removes the white spaces. E.g spaces
+
+        function trim(strValue) {
+                        return (strValue.replace(/^\s+/, '').replace(/\s+$/, ''));
+                    }
+
+          function getLocData(action)
+          {
+            var onGeoSuccess;
+            if(action == "add")
+            {
+                // Getting Location and placing it into the Location Field
+                onGeoSuccess = function(position) {
+                        var loc_data =  position.coords.latitude+","+position.coords.longitude;
+                        $("#txLocation").val(loc_data);
+                        validateForm();
+                    };
+             }
+             else
+             {
+                onGeoSuccess = function(position) {
+                        var loc_data =  position.coords.latitude+","+position.coords.latitude;
+                        $("#txLocationu").val(loc_data);
+                        validateFormUpdate();
+                    };
+             }
+                    // Show error message if location cannot be found
+                    function onGeoError(error) {
+                    alert('Geolocation error: ' + error.code + ' ' +
+                    'message: ' + error.message + '\n');
+                    }
+                    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+          }
+
+          function validateForm() {
+
+               // Getting the inputted values and putting them into a variable
+              var loc = trim(document.getElementById("txLocation").value);
+              var txFoodName = trim(document.getElementById("txFoodName").value);
+              var date = trim(document.getElementById("txDate").value);
+              var time = trim(document.getElementById("txTime").value);
+              var name = trim(document.getElementById("txName").value);
+
+
+              var error = false;
+
+            //Grouping the errors into an array.
+               var errors = Array();
+
+              // Checking if the input goes against any of the if statements.
+
+              if (loc == "") {
+                            getLocData("add");
+                            return;
+                        }
+
+               if (txFoodName == "") {
+                            errors[0] = "Food consumed is required";
+                            error = true;
+                        }
+
+
+              if (date == "") {
+                            errors[1] = "Date is required";
+                            error = true;
+                        }
+
+              if (time == "") {
+                            errors[2] = "Time is required";
+                            error = true;
+                        }
+
+              if (name == "") {
+                            errors[3] = "Name is required";
+                            error = true;
+                        }
+
+              // Printing the errors that are 'true'
+               var htmlerror = "";
+                        if (error == true) {
+                            for (var i = 0; i < errors.length; i++) {
+                                if (errors[i] != null) {
+                                    htmlerror +=  errors[i] + "\n" ;
+                                }
+                            }
+
+                            // Show error in an alert box
+                            alert(htmlerror);
+                            return false;
+                        }
+                        else
+                        {
+
+                         var submit = confirm("Do you wish to submit?");
+
+                         if (submit == true) {
+
+                         AddValueToDB();
+                         return true;
+
+                             }
+
+                             else {
+                                      return false;
+                                    }
+
+
+
+                        }
+
+
+
+          }
+
+            // Validate the Update Form (Same as Add Food form)
+
+          function validateFormUpdate() {
+
+                // Getting the inputted values and putting them into a variable
+              var loc = trim(document.getElementById("txLocationu").value);
+              var txFoodName = trim(document.getElementById("txFoodNameu").value);
+              var date = trim(document.getElementById("txDateu").value);
+              var time = trim(document.getElementById("txTimeu").value);
+               var name = trim(document.getElementById("txNameu").value);
+
+
+               if (loc == "") {
+                            getLocData("edit");
+                            return;
+                        }
+
+              var error = false;
+
+            //Grouping the errors into an array.
+               var errors = Array();
+
+              // Checking if the input goes against any of the if statements.
+               if (txFoodName == "") {
+                            errors[0] = "Food consumed is required";
+                            error = true;
+                        }
+
+
+              if (date == "") {
+                            errors[1] = "Date is required";
+                            error = true;
+                        }
+
+              if (time == "") {
+                            errors[2] = "Time is required";
+                            error = true;
+                        }
+
+              if (name == "") {
+                            errors[3] = "Name is required";
+                            error = true;
+                        }
+
+
+
+
+              // Printing the errors that are 'true'
+               var htmlerror = "";
+                        if (error == true) {
+                            for (var i = 0; i < errors.length; i++) {
+                                if (errors[i] != null) {
+                                    htmlerror +=  errors[i] + "\n" ;
+                                }
+                            }
+
+                            // Show error in an alert box
+                            alert(htmlerror);
+                            return false;
+                        }
+                        else
+                        {
+                            UpdateValueToDB();
+                            return true;
+                        }
+
+
+
+          }
+
+    </script>
+
+
+
+</head>
+<body>
+
+<!-- /HOME PAGE -->
+<div data-role="page" id="pagehome">
+
+    <div data-role="header" style="color: white;" data-position="fixed">
+        <h1></h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <br>
+        <br>
+        <br>
+        <img src="./logo.png" alt="DietaryZ" style="max-width: 100%;">
+
+        <br><br>
+
+       <center> <h5>Note: You must turn on location services in order to use the app. Please make sure
+       you are also connected to the internet.</h5></center>
+
+
+
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagehome" class="ui-btn-active ui-state-persist" data-icon="home">Home</a></li>
+                <li><a href="#pageview" data-icon="grid">View</a></li>
+                <li><a href="#pageadd"   onclick="clearAddForm()" data-icon="plus">Add</a></li>
+                <li><a href="#pagesearch" data-icon="search">Search</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+
+
+</div>
+
+<!-- /ADD PAGE -->
+<div data-role="page" id="pageadd">
+
+    <div data-role="header" style="color: white;" data-position="fixed">
+        <h1>Add Food</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <form>
+            <p><small>If you are using emulator, fill in location field first or leave blank</small></p>
+            <label for="txLocation">Location:*</label>
+            <input type="text" name="txLocation" id="txLocation" >
+
+
+            <label for="txFoodName">Food Consumed:*</label>
+            <input type="text" name="txFoodName" id="txFoodName" >
+
+            <fieldset class="ui-field-contain">
+                <label for="txFoodGroup">Food Group:*</label>
+                <select name="txFoodGroup" id="txFoodGroup">
+                    <option value="Carbohydrates">Carbohydrates</option>
+                    <option value="Protein">Protein</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Fruit & Veg">Fruit & Veg</option>
+
+                </select>
+            </fieldset>
+
+            <fieldset class="ui-field-contain">
+                <label for="txMealType">Meal Type:</label>
+                <select name="txMealType" id="txMealType">
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
+
+                </select>
+            </fieldset>
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><label for="txDate">Date:*</label>
+                    <input type="date" name="txDate" id="txDate" value=""  />
+
+                </div>
+
+                <div class="ui-block-b"><label for="txTime">Time:*</label>
+                    <input type="time" name="txTime" id="txTime" value=""  /></div>
+            </div>
+
+            <label for="txCal">Calories:</label>
+            <input type="text" name="txCal" id="txCal" >
+
+            <label for="txName">Name:*</label>
+            <input type="text" name="txName" id="txName" >
+
+
+            <label for="txNotes">Notes:</label>
+            <textarea name="txNotes" id="txNotes"></textarea>
+
+            <input type="button" value="Add record"  onClick="validateForm()"><br>
+            <input type="button" value="Reset"  onClick="resetForm()"><br>
+        </form>
+
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagehome" data-icon="home">Home</a></li>
+                <li><a href="#pageview" data-icon="grid">View</a></li>
+                <li><a href="#pageadd" class="ui-btn-active ui-state-persist"
+                       onclick="clearAddForm()"
+                       data-icon="plus">Add</a></li>
+                <li><a href="#pagesearch" data-icon="search">Search</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+
+
+</div>
+
+
+<!-- /UPDATE PAGE -->
+<div data-role="page" id="pageupdate">
+
+    <div data-role="header" style="color: white;" data-position="fixed">
+        <h1>Update Food</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <form>
+            <label for="txLocation">Location: </label>
+            <input type="text" name="txLocation" id="txLocationu" disabled>
+            <label for="txFoodName">Food Consumed:*</label>
+            <input type="text" name="txFoodName" id="txFoodNameu" >
+
+            <fieldset class="ui-field-contain">
+                <label for="txFoodGroup">Food Group:*</label>
+                <select name="txFoodGroup" id="txFoodGroupu">
+                    <option value="Carbohydrates">Carbohydrates</option>
+                    <option value="Protein">Protein</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Fruit & Veg">Fruit & Veg</option>
+
+                </select>
+            </fieldset>
+
+            <fieldset class="ui-field-contain">
+                <label for="txMealType">Meal Type:</label>
+                <select name="txMealType" id="txMealTypeu">
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
+
+                </select>
+            </fieldset>
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><label for="txDate">Date:*</label>
+                    <input type="date" name="txDate" id="txDateu" value=""  />
+
+                </div>
+
+                <div class="ui-block-b"><label for="txTime">Time:*</label>
+                    <input type="time" name="txTime" id="txTimeu" value=""  /></div>
+            </div>
+            <label for="txCalu">Calories:</label>
+            <input type="text" name="txCalu" id="txCalu" >
+
+            <label for="txName">Name:*</label>
+            <input type="text" name="txName" id="txNameu" >
+
+            <label for="txNotes">Notes:</label>
+            <textarea name="txNotes" id="txNotesu"></textarea>
+
+
+            <input type="button" value="Update"  onClick="validateFormUpdate()">
+            <input type="button" value="Delete"  onClick="DeleteValue()"><br>
+
+
+        </form>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagehome" data-icon="home">Home</a></li>
+                <li><a href="#pageview" data-icon="grid">View</a></li>
+                <li><a href="#pageadd"  onclick="clearAddForm()"  data-icon="plus">Add</a></li>
+                <li><a href="#pagesearch" data-icon="search">Search</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+
+
+</div>
+
+
+<!-- /VIEW PAGE -->
+<div data-role="page" id="pageview">
+
+    <div data-role="header" style="color: white;" data-position="fixed">
+        <h1>View</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+
+        <span id="lbFood">  </span>
+<br>
+        <input type="button" value="Delete All"  onClick="DeleteAllValue()"><br>
+
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagehome" data-icon="home">Home</a></li>
+                <li><a href="#pageview" class="ui-btn-active ui-state-persist" data-icon="grid">View</a></li>
+                <li><a href="#pageadd"        onclick="clearAddForm()"  data-icon="plus">Add</a></li>
+                <li><a href="#pagesearch" data-icon="search">Search</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+
+</div>
+
+
+
+<!-- /SEARCH PAGE -->
+<div data-role="page" id="pagesearch">
+
+    <div data-role="header" style="color: white;" data-position="fixed">
+        <h1>Search</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+
+        <form class="ui-filterable">
+            <input id="myFilter" data-type="search">
+        </form>
+
+        <div id="lbSearchFood">  </div>
+
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagehome" data-icon="home">Home</a></li>
+                <li><a href="#pageview"  data-icon="grid">View</a></li>
+                <li><a href="#pageadd"         onclick="clearAddForm()"  data-icon="plus">Add</a></li>
+                <li><a href="#pagesearch" class="ui-btn-active ui-state-persist" data-icon="search">Search</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

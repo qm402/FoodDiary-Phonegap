@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c1f48b6ab9bb7a9b0c94fa4906007730e9a58971">
+        <dex dex="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_31aa6339195387376164377d3b4f2493a61c3784/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ae00d143d9b9655f4e9ecca5c385f11c5f9c87fc">
+        <dex dex="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_2f5d053885237870b30e34c2083fddc5294bbdc9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/jars/libs/internal_impl-21.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-21.0.0_d11679a60fbd6f42d7eb4ad1cd8295067612c1bc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-21.0.0_bc2b9d75042ef1739c86bda469742cce53a0b780/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Mo/Documents/CW_PhoneGap/app/libs/cordova-2.9.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1c00db30c9cdad3676aeefd78e37b716364b5259">
+        <dex dex="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/2/cordova-2.9.0_d806967c7aaec8c488972cb01962814136128ba3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Mo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-21.0.0_d6ee5f2d1eafe8a8cf17e37e9cfb6f14cc5ebcee/classes.dex" />
+    </item>
+
+</items>

@@ -1,0 +1,7 @@
+#Tue Apr 04 09:22:52 BST 2017
+base.0=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_31aa6339195387376164377d3b4f2493a61c3784
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_2f5d053885237870b30e34c2083fddc5294bbdc9/classes.dex
+base.1=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_2f5d053885237870b30e34c2083fddc5294bbdc9
+file.0=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_31aa6339195387376164377d3b4f2493a61c3784/classes.dex

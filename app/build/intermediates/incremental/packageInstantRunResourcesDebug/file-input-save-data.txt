@@ -1,0 +1,36 @@
+#Internal package file, do not edit.
+#Mon Apr 03 21:47:48 BST 2017
+2.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_
+5.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug/www/app.js
+5.set=ASSET
+3.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_
+6.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug/www/logo.png
+2.set=ANDROID_RESOURCE
+10.set=ANDROID_RESOURCE
+10.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_/res/xml/config.xml
+4.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_
+7.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug/www/index.html
+7.set=ASSET
+count=11
+0.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug/www/style.css
+5.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug
+8.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_/res/menu/main.xml
+4.set=ANDROID_RESOURCE
+6.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug
+1.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug/www/cordova.js
+9.set=ANDROID_RESOURCE
+9.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_/AndroidManifest.xml
+10.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_
+1.set=ASSET
+7.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug
+2.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_/res/drawable-xxhdpi-v4/ic_launcher.png
+6.set=ASSET
+0.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug
+8.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_
+3.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_/res/layout/activity_main.xml
+3.set=ANDROID_RESOURCE
+1.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/assets/debug
+9.base=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_
+4.file=/Users/Mo/Documents/CW_PhoneGap/app/build/intermediates/res/resources-debug.ap_/resources.arsc
+8.set=ANDROID_RESOURCE
+0.set=ASSET
